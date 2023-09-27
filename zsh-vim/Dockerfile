@@ -23,6 +23,8 @@ ENV SHELL=zsh
 RUN pnpm setup
 RUN source /root/.zshrc && pnpm i -g turbo
 
+RUN apt-get update && apt-get install -y jq
+
 WORKDIR /home
 
 RUN sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="clean"|' /root/.zshrc
