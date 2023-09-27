@@ -7,7 +7,13 @@ SHARED_DIRECTORY := "shared"
 build:
 	docker build -t $(TAG) .
 
-publish:
+build-x86:
+	docker buildx build --platform x86_64 -t $(TAG) .
+
+publish-x86: build-x86
+	docker push $(TAG)
+
+publish: build
 	docker push $(TAG)
 
 run: build
