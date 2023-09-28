@@ -8,7 +8,7 @@ build:
 	docker build -t $(TAG) .
 
 build-x86:
-	docker buildx build --platform x86_64 -t $(TAG) .
+	depot build -t $(TAG) .
 
 publish-x86: build-x86
 	docker push $(TAG)
