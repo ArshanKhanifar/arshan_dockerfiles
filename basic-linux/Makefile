@@ -1,5 +1,5 @@
 DOCKER_ACCOUNT := arshankhanifar
-TAG := $(DOCKER_ACCOUNT)/basic-linux
+TAG := $(docker_org)/basic-linux
 
 build:
 	docker build -t $(TAG) .

@@ -1,6 +1,6 @@
 DOCKER_ACCOUNT := arshankhanifar
 PROJECT_NAME := arshans-system-setup
-TAG := $(DOCKER_ACCOUNT)/$(PROJECT_NAME)
+TAG := $(docker_org)/$(PROJECT_NAME)
 SHELL := zsh
 SHARED_DIRECTORY := "shared"
 
@@ -16,6 +16,8 @@ publish-x86: build-x86
 publish: build
 	docker push $(TAG)
 
+# one-liner:
+# docker run -it --rm -v ~/.cache/suno/bark_v0:/root/.cache/suno/bark_v0 arshankhanifar/arshans-system-setup:latest /bin/zsh
 run: build
 	docker run -it --rm \
 		-v ./$(SHARED_DIRECTORY):/home/$(SHARED_DIRECTORY) \
