@@ -1,11 +1,12 @@
 build:
-	make -C $(project) build
+	docker build -t arshankhanifar/$(name):latest -f $(name).Dockerfile .
 
 run:
-	make -C $(project) run
+	docker run --rm --name $(name) -it arshankhanifar/$(name):latest
 
 push:
-	make -C $(project) push
+	docker push arshankhanifar/$(name):latest
 
-publish:
-	make -C $(project) build-multiplatform
+build-multiplatform:
+	docker buildx build --platform linux/amd64,linux/arm64 \
+		-t arshankhanifar/$(name):latest -f $(name).Dockerfile . --push
